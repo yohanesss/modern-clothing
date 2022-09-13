@@ -7,6 +7,7 @@ import {
   signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -32,30 +33,29 @@ provider.setCustomParameters({
 });
 
 export const auth = getAuth();
-export const signInWithGooglePopup = () =>
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      return { user, token, credential };
-      // ...
-    })
-    .catch((error) => {
-      console.log("[error handling signInWithPopup]", error);
-    });
+export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+
+export const signInWithGoogleRedirect = () =>
+  signInWithRedirect(auth, provider);
 
 export const db = getFirestore();
 
-export const createUserDocumentFromAuth = async (userAuth) => {
+export const createUserDocumentFromAuth = async (
+  userAuth,
+  userAdditionalInformation = {}
+) => {
+  if (!userAuth) throw new Error("userAuth is needed!");
   const userDocRef = await doc(db, "users", userAuth.uid);
   const userSnapshot = await getDoc(userDocRef);
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
-    const userData = { displayName, email, createdAt };
+    const userData = {
+      displayName,
+      email,
+      createdAt,
+      ...userAdditionalInformation,
+    };
     console.log({ userData });
 
     try {
@@ -66,4 +66,9 @@ export const createUserDocumentFromAuth = async (userAuth) => {
   }
 
   return userDocRef;
+};
+
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) throw new Error("email and password is needed!");
+  return await createUserWithEmailAndPassword(auth, email, password);
 };
