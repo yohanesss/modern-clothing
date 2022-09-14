@@ -8,7 +8,7 @@ import {
 } from "../../utils/firebase/firebase.util";
 import SignUpForm from "../../components/sign-up-form/sign-up-form.component";
 
-const SignIn = () => {
+const Authentication = () => {
   // TODO: used for signInWithGoogleRedirect
   // useEffect(() => {
   //   const _getRedirectResult = async () => {
@@ -42,4 +42,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default Authentication;
