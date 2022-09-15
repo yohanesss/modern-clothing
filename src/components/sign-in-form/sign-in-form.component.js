@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
 } from "../../utils/firebase/firebase.util";
@@ -42,10 +41,8 @@ const SignInForm = () => {
     }
   };
 
-  // TODO: used for signInWithGoogleRedirect
   const signInWithGoogle = async () => {
-    const response = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(response.user);
+    signInWithGooglePopup();
   };
 
   return (

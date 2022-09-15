@@ -59,7 +59,6 @@ export const createUserDocumentFromAuth = async (
       createdAt,
       ...userAdditionalInformation,
     };
-    console.log({ userData });
 
     try {
       setDoc(userDocRef, userData);
