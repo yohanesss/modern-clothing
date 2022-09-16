@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../contexts/cart.context";
 import Button from "../button/button.component";
 import CartItem from "../cart-item/cart-item.component";
 import "./cart-dropdown.styles.scss";
 
 const CartDropdown = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, setOpenCartDropdown } = useContext(CartContext);
   return (
     <div className="cart-dropdown-container">
       <div className="cart-items">
@@ -13,7 +14,15 @@ const CartDropdown = () => {
           <CartItem product={cartItem} key={cartItem.id} />
         ))}
       </div>
-      <Button>GO TO CHECKOUT</Button>
+      <div>
+        <Link
+          to="/checkout"
+          onClick={() => setOpenCartDropdown(false)}
+          style={{ display: "block" }}
+        >
+          <Button>GO TO CHECKOUT</Button>
+        </Link>
+      </div>
     </div>
   );
 };
