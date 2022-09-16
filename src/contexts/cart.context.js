@@ -28,6 +28,22 @@ const substractCartItem = (cartItems, product) => {
   return substractedCartItems.filter((cartItem) => cartItem.quantity > 0);
 };
 
+const substractCartItemAnotherWay = (cartItems, product) => {
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.id === product.id
+  );
+
+  if (existingCartItem.quantity === 1) {
+    return cartItems.filter((cartItem) => cartItem.id !== product.id);
+  }
+
+  return cartItems.map((cartItem) =>
+    cartItem.id === product.id
+      ? { ...cartItem, quantity: cartItem.quantity - 1 }
+      : cartItem
+  );
+};
+
 export const CartContext = createContext({
   isOpenCartDropdown: false,
   setOpenCartDropdown: () => {},
@@ -52,7 +68,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const substractItemFromCart = (productToAdd) => {
-    setCartItems(substractCartItem(cartItems, productToAdd));
+    setCartItems(substractCartItemAnotherWay(cartItems, productToAdd));
   };
 
   useEffect(() => {
