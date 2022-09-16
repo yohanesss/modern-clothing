@@ -16,6 +16,10 @@ const CheckoutItem = ({ product }) => {
         <button onClick={substractItemFromCartHandler}>-</button>
         <span>Qty: {product.quantity}</span>
         <button onClick={addItemToCartHandler}>+</button>
+        <div>
+          Price Per Item: ${product.price} | Total Price: $
+          {product.price * product.quantity}
+        </div>
       </div>
       <div>
         <button onClick={deleteItemFromCartHandler}>Remove Item</button>
