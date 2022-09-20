@@ -1,4 +1,5 @@
 import React from "react";
+import { numberToUsd } from "../../utils/currency";
 import "./cart-item.styles.scss";
 
 const CartItem = ({ product }) => {
@@ -9,7 +10,7 @@ const CartItem = ({ product }) => {
       <div className="item-details">
         <span className="name">{name}</span>
         <span className="price">
-          {quantity} x ${price}
+          {quantity} x {numberToUsd(price)}
         </span>
       </div>
     </div>

@@ -52,12 +52,14 @@ export const CartContext = createContext({
   deleteItemFromCart: () => {},
   substractItemFromCart: () => {},
   cartItemsTotalQtyCount: 0,
+  totalPrice: 0,
 });
 
 export const CartProvider = ({ children }) => {
   const [isOpenCartDropdown, setOpenCartDropdown] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [cartItemsTotalQtyCount, setCartItemsTotalQtyCount] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const addItemToCart = (productToAdd) => {
     setCartItems(addCartItem(cartItems, productToAdd));
@@ -79,6 +81,12 @@ export const CartProvider = ({ children }) => {
       0
     );
     setCartItemsTotalQtyCount(totalItems);
+
+    const totalPrice = cartItems.reduce(
+      (totalCount, item) => totalCount + item.quantity * item.price,
+      0
+    );
+    setTotalPrice(totalPrice);
   }, [cartItems]);
 
   return (
@@ -91,6 +99,7 @@ export const CartProvider = ({ children }) => {
         deleteItemFromCart,
         substractItemFromCart,
         cartItemsTotalQtyCount,
+        totalPrice,
       }}
     >
       {children}

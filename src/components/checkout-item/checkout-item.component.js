@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
+import { numberToUsd } from "../../utils/currency";
+import "./checkout-item.styles.scss";
 
 const CheckoutItem = ({ product }) => {
   const { addItemToCart, deleteItemFromCart, substractItemFromCart } =
@@ -10,19 +12,23 @@ const CheckoutItem = ({ product }) => {
   const deleteItemFromCartHandler = () => deleteItemFromCart(product);
 
   return (
-    <div key={product.id}>
-      <h3>{product.name}</h3>
-      <div>
-        <button onClick={substractItemFromCartHandler}>-</button>
-        <span>Qty: {product.quantity}</span>
-        <button onClick={addItemToCartHandler}>+</button>
-        <div>
-          Price Per Item: ${product.price} | Total Price: $
-          {product.price * product.quantity}
-        </div>
+    <div className="checkout-item-container">
+      <div className="image-container">
+        <img src={product.imageUrl} alt={`${product.name}`} />
       </div>
-      <div>
-        <button onClick={deleteItemFromCartHandler}>Remove Item</button>
+      <span className="name">{product.name}</span>
+      <span className="quantity">
+        <button className="arrow" onClick={substractItemFromCartHandler}>
+          &#10094;
+        </button>
+        <span className="value">{product.quantity}</span>
+        <button className="arrow" onClick={addItemToCartHandler}>
+          &#10095;
+        </button>
+      </span>
+      <span className="price">{numberToUsd(product.price)}</span>
+      <div className="remove-button" onClick={deleteItemFromCartHandler}>
+        &#10005;
       </div>
     </div>
   );
