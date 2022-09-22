@@ -1,13 +1,13 @@
 import { createContext, useEffect, useState } from "react";
 import { getCategoriesAndDocuments } from "../utils/firebase/firebase.util.js";
 
-export const ProductsContext = createContext({
-  products: [],
+export const CategoriesContext = createContext({
+  categoriesMap: {},
   setProducts: () => {},
 });
 
-export const ProductsProvider = ({ children }) => {
-  const [products, setProducts] = useState([]);
+export const CategoriesProvider = ({ children }) => {
+  const [categoriesMap, setCategoriesMap] = useState({});
 
   // Use Effect for triggering data creation
   // =======================================
@@ -18,15 +18,18 @@ export const ProductsProvider = ({ children }) => {
   useEffect(() => {
     const getcategoriesMap = async () => {
       const categoriesMap = await getCategoriesAndDocuments();
-      console.log({ categoriesMap });
+      console.log("adsf", { categoriesMap });
+      setCategoriesMap(categoriesMap);
     };
 
     getcategoriesMap();
   }, []);
 
   return (
-    <ProductsContext.Provider value={{ products, setProducts }}>
+    <CategoriesContext.Provider
+      value={{ categoriesMap: categoriesMap, setProducts: setCategoriesMap }}
+    >
       {children}
-    </ProductsContext.Provider>
+    </CategoriesContext.Provider>
   );
 };

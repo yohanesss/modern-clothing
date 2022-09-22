@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 
@@ -19,7 +19,7 @@ const Navigation = () => {
   };
 
   return (
-    <>
+    <Fragment>
       <div className="navigation">
         <Link to="/">
           <div className="logo-container" to="/">
@@ -44,7 +44,7 @@ const Navigation = () => {
         {isOpenCartDropdown && <CartDropdown />}
       </div>
       <Outlet />
-    </>
+    </Fragment>
   );
 };
 
