@@ -1,19 +1,23 @@
 import React from "react";
 import { numberToUsd } from "../../utils/currency";
-import "./cart-item.styles.scss";
+import {
+  CartItemContainer,
+  ItemDetails,
+  ItemName,
+} from "./cart-item.styles.js";
 
 const CartItem = ({ product }) => {
   const { name, quantity, imageUrl, price } = product;
   return (
-    <div className="cart-item-container">
+    <CartItemContainer>
       <img src={imageUrl} alt={name} />
-      <div className="item-details">
-        <span className="name">{name}</span>
-        <span className="price">
+      <ItemDetails>
+        <ItemName>{name}</ItemName>
+        <span>
           {quantity} x {numberToUsd(price)}
         </span>
-      </div>
-    </div>
+      </ItemDetails>
+    </CartItemContainer>
   );
 };
 
