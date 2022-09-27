@@ -19,7 +19,7 @@ const addCartItem = (cartItems, product) => {
 const deleteCartItem = (cartItems, product) =>
   cartItems.filter((cartItem) => cartItem.id !== product.id);
 
-const substractCartItem = (cartItems, product) => {
+export const substractCartItem = (cartItems, product) => {
   let substractedCartItems = cartItems.map((cartItem) =>
     cartItem.id === product.id
       ? { ...cartItem, quantity: cartItem.quantity - 1 }
