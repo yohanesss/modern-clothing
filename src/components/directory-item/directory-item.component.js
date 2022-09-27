@@ -13,7 +13,7 @@ const CategoryItem = ({ category }) => {
     <DirectoryItemContainer>
       <BackgroundImage imageUrl={category.imageUrl} />
       <Body>
-        <ShopLink to={`/shop/${category.title}`}>
+        <ShopLink to={category.route}>
           <h2>{category.title}</h2>
           <p>Shop Now</p>
         </ShopLink>
