@@ -1,5 +1,5 @@
 import React from "react";
-import { numberToUsd } from "../../utils/currency";
+import { numberToUsd } from "../../utils/currency.util";
 import {
   CartItemContainer,
   ItemDetails,

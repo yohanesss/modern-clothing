@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
-import { numberToUsd } from "../../utils/currency";
+import { numberToUsd } from "../../utils/currency.util";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import {
   Footer,
