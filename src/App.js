@@ -21,7 +21,6 @@ const App = () => {
       if (user) {
         await createUserDocumentFromAuth(user);
       }
-      console.log({ user });
       dispatch(setCurrentUser(user));
     });
     return unsubsribe;

@@ -3,7 +3,6 @@ import { getCategoriesAndDocuments } from "../utils/firebase/firebase.util.js";
 
 export const CategoriesContext = createContext({
   categoriesMap: {},
-  setProducts: () => {},
 });
 
 export const CategoriesProvider = ({ children }) => {
@@ -19,15 +18,14 @@ export const CategoriesProvider = ({ children }) => {
     const getcategoriesMap = async () => {
       const categoriesMap = await getCategoriesAndDocuments();
       setCategoriesMap(categoriesMap);
+      console.log({ categoriesMap });
     };
 
     getcategoriesMap();
   }, []);
 
   return (
-    <CategoriesContext.Provider
-      value={{ categoriesMap: categoriesMap, setProducts: setCategoriesMap }}
-    >
+    <CategoriesContext.Provider value={{ categoriesMap: categoriesMap }}>
       {children}
     </CategoriesContext.Provider>
   );
