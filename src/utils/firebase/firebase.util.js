@@ -72,8 +72,8 @@ export const addCollectionAndDocuments = async (
   console.log("addCollectionAndDocuments successfully added");
 };
 
-export const getCategoriesAndDocuments = async () => {
-  const collectionRef = collection(db, "categories");
+export const getCategoriesAndDocuments = async (collectionName) => {
+  const collectionRef = collection(db, collectionName);
   const q = query(collectionRef);
 
   const querySnapshop = await getDocs(q);
