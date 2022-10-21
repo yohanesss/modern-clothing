@@ -1,15 +1,17 @@
+import { CartInitialState } from "./cart.reducer";
 import { createSelector } from "reselect";
+import { CartItem } from "./cart.types";
 
-const getUpdatedCartTotalQty = (cartItems) =>
+const getUpdatedCartTotalQty = (cartItems: CartItem[]) =>
   cartItems.reduce((totalCount, item) => totalCount + item.quantity, 0);
 
-const getUpdatedCartTotalPrice = (cartItems) =>
+const getUpdatedCartTotalPrice = (cartItems: CartItem[]) =>
   cartItems.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,
     0
   );
 
-const selectCartReducer = (state) => {
+const selectCartReducer = (state): CartInitialState => {
   return state.cart;
 };
 
