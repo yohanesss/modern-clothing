@@ -12,12 +12,3 @@ export enum USER_ACTION_TYPES {
   SIGN_OUT_SUCCESS = "USER/SIGN_OUT_SUCCESS",
   SIGN_OUT_FAILED = "USER/SIGN_OUT_FAILED",
 }
-
-export type User = {
-  displayName: string;
-  email: string;
-};
-
-export interface ISignUpPayload extends User {
-  [extraProps: string]: string;
-}

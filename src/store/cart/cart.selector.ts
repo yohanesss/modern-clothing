@@ -1,3 +1,4 @@
+import { RootState } from "./../store";
 import { CartInitialState } from "./cart.reducer";
 import { createSelector } from "reselect";
 import { CartItem } from "./cart.types";
@@ -11,7 +12,7 @@ const getUpdatedCartTotalPrice = (cartItems: CartItem[]) =>
     0
   );
 
-const selectCartReducer = (state): CartInitialState => {
+const selectCartReducer = (state: RootState): CartInitialState => {
   return state.cart;
 };
 
