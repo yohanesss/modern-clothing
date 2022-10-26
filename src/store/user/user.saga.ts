@@ -5,10 +5,7 @@ import { USER_ACTION_TYPES } from "./user.types";
 import {
   signInSuccess,
   signInFailed,
-  googleSignInStart,
-  emailSignInStart,
   signUpSuccess,
-  signUpStart,
   signOutSuccess,
   signOutFailed,
   signUpFailed,
