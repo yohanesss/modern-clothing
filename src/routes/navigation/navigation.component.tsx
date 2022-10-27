@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, MouseEventHandler } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
@@ -21,7 +21,7 @@ const Navigation = () => {
   const currentUser = useSelector(selectCurrentUser);
   const isOpenCartDropdown = useSelector(selectIsOpenCartDropdown);
 
-  const signOutHandler = async () => {
+  const signOutHandler: MouseEventHandler<HTMLAnchorElement> = async () => {
     dispatch(signOutStart());
   };
 
@@ -36,7 +36,7 @@ const Navigation = () => {
           {!currentUser ? (
             <NavLink to="/auth">Sign In</NavLink>
           ) : (
-            <NavLink as="span" to="/" onClick={signOutHandler}>
+            <NavLink to="/" onClick={signOutHandler}>
               Sign Out
             </NavLink>
           )}

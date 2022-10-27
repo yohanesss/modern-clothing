@@ -3,8 +3,15 @@ import CategoryItem from "../directory-item/directory-item.component";
 
 import { DirectoryContainer } from "./directory.styles.js";
 
+export type DirectoryCategory = {
+  id: number;
+  title: string;
+  imageUrl: string;
+  route: string;
+};
+
 const Directory = () => {
-  const categories = [
+  const categories: DirectoryCategory[] = [
     {
       id: 1,
       title: "hats",

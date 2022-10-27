@@ -1,4 +1,5 @@
 import React from "react";
+import { CartItem } from "../../store/cart/cart.types";
 import { numberToUsd } from "../../utils/currency.util";
 import {
   CartItemContainer,
@@ -6,7 +7,11 @@ import {
   ItemName,
 } from "./cart-item.styles.js";
 
-const CartItem = ({ product }) => {
+type CartItemProps = {
+  product: CartItem;
+};
+
+const CartItemDetail = ({ product }: CartItemProps) => {
   const { name, quantity, imageUrl, price } = product;
   return (
     <CartItemContainer>
@@ -21,4 +26,4 @@ const CartItem = ({ product }) => {
   );
 };
 
-export default CartItem;
+export default CartItemDetail;

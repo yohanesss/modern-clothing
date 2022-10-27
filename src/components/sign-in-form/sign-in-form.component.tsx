@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
+import React, { useState, FormEvent, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 import {
   googleSignInStart,
@@ -20,21 +21,21 @@ const SignInForm = () => {
 
   const resetFormFields = () => setFormFields(defaultFormFields);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormFields({ ...formFields, [e.target.name]: e.target.value });
   };
 
-  const handleSubmitForm = async (e) => {
+  const handleSubmitForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       dispatch(emailSignInStart(email, password));
       resetFormFields();
     } catch (error) {
-      switch (error.code) {
-        case "auth/wrong-password":
+      switch ((error as AuthError).code) {
+        case AuthErrorCodes.INVALID_PASSWORD:
           alert("incorrect password for email");
           break;
-        case "auth/user-not-found":
+        case AuthErrorCodes.USER_DELETED:
           alert("no user associated with this email");
           break;
         default:

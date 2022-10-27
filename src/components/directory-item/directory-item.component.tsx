@@ -1,4 +1,5 @@
 import React from "react";
+import { DirectoryCategory } from "../directory/directory.component.js";
 
 import {
   BackgroundImage,
@@ -7,7 +8,11 @@ import {
   ShopLink,
 } from "./directory-item.styles.js";
 
-const CategoryItem = ({ category }) => {
+type CategoryItemProps = {
+  category: DirectoryCategory;
+};
+
+const CategoryItem = ({ category }: CategoryItemProps) => {
   return (
     <DirectoryItemContainer>
       <BackgroundImage imageUrl={category.imageUrl} />

@@ -17,8 +17,13 @@ import {
   substractItemFromCart,
 } from "../../store/cart/cart.action";
 import { selectCartItems } from "../../store/cart/cart.selector";
+import { CartItem } from "../../store/cart/cart.types";
 
-const CheckoutItem = ({ product }) => {
+type CheckoutItemProps = {
+  product: CartItem;
+};
+
+const CheckoutItem = ({ product }: CheckoutItemProps) => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 
