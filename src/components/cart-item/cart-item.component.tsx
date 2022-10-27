@@ -1,11 +1,7 @@
 import React from "react";
 import { CartItem } from "../../store/cart/cart.types";
 import { numberToUsd } from "../../utils/currency.util";
-import {
-  CartItemContainer,
-  ItemDetails,
-  ItemName,
-} from "./cart-item.styles.js";
+import { CartItemContainer, ItemDetails, ItemName } from "./cart-item.styles";
 
 type CartItemProps = {
   product: CartItem;

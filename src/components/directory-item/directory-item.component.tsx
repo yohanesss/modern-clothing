@@ -6,7 +6,7 @@ import {
   Body,
   DirectoryItemContainer,
   ShopLink,
-} from "./directory-item.styles.js";
+} from "./directory-item.styles";
 
 type CategoryItemProps = {
   category: DirectoryCategory;

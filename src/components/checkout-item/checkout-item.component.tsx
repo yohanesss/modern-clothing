@@ -9,7 +9,7 @@ import {
   Quantity,
   RemoveButton,
   Value,
-} from "./checkout-item.styles.js";
+} from "./checkout-item.styles";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addItemToCart,

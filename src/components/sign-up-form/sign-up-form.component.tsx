@@ -2,13 +2,9 @@ import { AuthErrorCodes, AuthError } from "firebase/auth";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { signUpStart } from "../../store/user/user.action";
-import {
-  createAuthUserWithEmailAndPassword,
-  createUserDocumentFromAuth,
-} from "../../utils/firebase/firebase.util";
 import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
-import { SignUpContainer } from "./sign-up-form.styles.js";
+import { SignUpContainer } from "./sign-up-form.styles";
 
 const defaultFormFields = {
   displayName: "",

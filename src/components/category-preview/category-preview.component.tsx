@@ -7,7 +7,7 @@ import {
   CategoryPreviewContainer,
   Preview,
   Title,
-} from "./category-preview.styles.js";
+} from "./category-preview.styles";
 
 type CategoryPreviewProps = {
   title: string;

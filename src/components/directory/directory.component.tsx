@@ -1,7 +1,7 @@
 import React from "react";
 import CategoryItem from "../directory-item/directory-item.component";
 
-import { DirectoryContainer } from "./directory.styles.js";
+import { DirectoryContainer } from "./directory.styles";
 
 export type DirectoryCategory = {
   id: number;

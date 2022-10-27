@@ -10,7 +10,7 @@ import {
   Name,
   Price,
   ProductCardContainer,
-} from "./product-card.styles.js";
+} from "./product-card.styles";
 
 type ProductCardProps = {
   product: CategoryItem;

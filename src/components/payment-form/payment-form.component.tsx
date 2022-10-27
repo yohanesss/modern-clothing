@@ -9,7 +9,7 @@ import {
   PaymentButton,
   PaymentFormContainer,
 } from "./payment-form.styles";
-import { Stripe, StripeCardElement } from "@stripe/stripe-js";
+import { StripeCardElement } from "@stripe/stripe-js";
 
 const ifValidCardElement = (
   card: StripeCardElement | null
