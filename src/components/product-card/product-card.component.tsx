@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../../store/cart/cart.action";
 import { selectCartItems } from "../../store/cart/cart.selector";
-import { CartItem } from "../../store/cart/cart.types";
+import { CategoryItem } from "../../store/categories/category.types";
 import { numberToUsd } from "../../utils/currency.util";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import {
@@ -13,7 +13,7 @@ import {
 } from "./product-card.styles.js";
 
 type ProductCardProps = {
-  product: CartItem;
+  product: CategoryItem;
 };
 
 const ProductCard = ({ product }: ProductCardProps) => {
